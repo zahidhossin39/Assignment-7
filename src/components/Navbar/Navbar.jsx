@@ -15,13 +15,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white border-b border-gray-100 px-10 py-5 flex items-center justify-between sticky top-0 z-50">
-      {/* Logo */}
       <Link href="/" className="flex items-center">
         <span className="text-[22px] font-bold text-[#16423C] tracking-tight">Keen</span>
         <span className="text-[22px] font-medium text-[#16423C]/80 ml-0.5">Keeper</span>
       </Link>
 
-      {/* Navigation Links */}
       <div className="flex items-center space-x-6">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
