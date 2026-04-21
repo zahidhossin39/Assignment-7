@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { HiOutlineHome, HiOutlineClock, HiOutlineChartBar } from "react-icons/hi2";
+import logo from "@/assets/img/logo.png";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -16,8 +18,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-100 px-10 py-5 flex items-center justify-between sticky top-0 z-50">
       <Link href="/" className="flex items-center">
-        <span className="text-[22px] font-bold text-[#16423C] tracking-tight">Keen</span>
-        <span className="text-[22px] font-medium text-[#16423C]/80 ml-0.5">Keeper</span>
+        <Image src={logo} alt="KeenKeeper Logo" width={160} height={32} className="h-8 w-auto" priority />
       </Link>
 
       <div className="flex items-center space-x-6">

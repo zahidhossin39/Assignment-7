@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import { toast } from "react-toastify";
 import {
   HiOutlineClock,
   HiOutlineArchiveBox,
@@ -21,9 +22,9 @@ export default function FriendDetailsPage() {
     fetch("/data.json")
       .then((res) => res.json())
       .then((data) => {
-        const friendId = id || "2"; 
-        const found = data.find((f) => f.id.toString() === friendId);
-        setFriend(found || data[1]); 
+        const targetId = id ? id.toString() : "1";
+        const found = data.find((f) => f.id.toString() === targetId);
+        setFriend(found || data[0]);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -53,6 +54,19 @@ export default function FriendDetailsPage() {
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString("en-US", options);
+  };
+
+  const handleCheckIn = (type) => {
+    const entry = {
+      id: Date.now(),
+      type,
+      person: friend.name,
+      date: formatDate(new Date().toISOString()),
+      iconType: type.toLowerCase()
+    };
+    const logs = JSON.parse(localStorage.getItem("timelineLogs") || "[]");
+    localStorage.setItem("timelineLogs", JSON.stringify([entry, ...logs]));
+    toast.success(`${type} logged with ${friend.name}!`);
   };
 
   return (
@@ -171,19 +185,28 @@ export default function FriendDetailsPage() {
               Quick Check-In
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <button className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm">
+              <button 
+                onClick={() => handleCheckIn("Call")}
+                className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm"
+              >
                 <HiOutlinePhone className="text-3xl text-[#475569]" />
                 <span className="font-semibold text-[#475569] text-[15px]">
                   Call
                 </span>
               </button>
-              <button className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm">
+              <button 
+                onClick={() => handleCheckIn("Text")}
+                className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm"
+              >
                 <HiOutlineChatBubbleLeft className="text-3xl text-[#475569]" />
                 <span className="font-semibold text-[#475569] text-[15px]">
                   Text
                 </span>
               </button>
-              <button className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm">
+              <button 
+                onClick={() => handleCheckIn("Video")}
+                className="flex flex-col items-center justify-center gap-3 bg-[#F8FAFC] border border-gray-100 py-8 rounded-xl hover:bg-gray-100 transition-colors shadow-sm"
+              >
                 <HiOutlineVideoCamera className="text-3xl text-[#475569]" />
                 <span className="font-semibold text-[#475569] text-[15px]">
                   Video
