@@ -1,0 +1,123 @@
+
+ [
+    {
+        "id": 1,
+        "name": "Sarah Jenkins",
+        "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+        "email": "sarah.j@outlook.com",
+        "days_since_contact": 4,
+        "status": "on-track",
+        "tags": ["high school", "running"],
+        "bio": "Childhood best friend. We usually train for local 5Ks together.",
+        "goal": 14,
+        "next_due_date": "2026-04-30"
+    },
+    {
+        "id": 2,
+        "name": "Marcus Chen",
+        "picture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+        "email": "m.chen.dev@gmail.com",
+        "days_since_contact": 22,
+        "status": "overdue",
+        "tags": ["work", "coding"],
+        "bio": "Former lead developer at my first internship. Great mentor for architecture advice.",
+        "goal": 15,
+        "next_due_date": "2026-04-14"
+    },
+    {
+        "id": 3,
+        "name": "Elena Rodriguez",
+        "picture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+        "email": "elena.rod@lifestyle.com",
+        "days_since_contact": 6,
+        "status": "almost due",
+        "tags": ["college", "travel"],
+        "bio": "College roommate. We're planning a trip to Japan next year.",
+        "goal": 7,
+        "next_due_date": "2026-04-22"
+    },
+    {
+        "id": 4,
+        "name": "David Wilson",
+        "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+        "email": "david.w@photography.net",
+        "days_since_contact": 45,
+        "status": "overdue",
+        "tags": ["hobby", "photography"],
+        "bio": "Met at a street photography workshop. He has an amazing eye for urban landscapes.",
+        "goal": 30,
+        "next_due_date": "2026-04-06"
+    },
+    {
+        "id": 5,
+        "name": "Aisha Khan",
+        "picture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+        "email": "akhan.designs@icloud.com",
+        "days_since_contact": 2,
+        "status": "on-track",
+        "tags": ["design", "freelance"],
+        "bio": "Collaborated on several UI/UX projects. Loves minimalist aesthetic.",
+        "goal": 10,
+        "next_due_date": "2026-04-29"
+    },
+    {
+        "id": 6,
+        "name": "Liam O'Connor",
+        "picture": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6",
+        "email": "liam.oc@musicmail.com",
+        "days_since_contact": 13,
+        "status": "almost due",
+        "tags": ["concerts", "close friend"],
+        "bio": "Go-to person for indie rock concerts. We've seen 10 bands this year.",
+        "goal": 14,
+        "next_due_date": "2026-04-22"
+    },
+    {
+        "id": 7,
+        "name": "Priya Sharma",
+        "picture": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+        "email": "priya.cooks@yahoo.com",
+        "days_since_contact": 25,
+        "status": "overdue",
+        "tags": ["neighbor", "cooking"],
+        "bio": "Lives down the street. We often swap homemade recipes and spices.",
+        "goal": 21,
+        "next_due_date": "2026-04-17"
+    },
+    {
+        "id": 8,
+        "name": "James Taylor",
+        "picture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+        "email": "jt.finance@company.com",
+        "days_since_contact": 5,
+        "status": "on-track",
+        "tags": ["gym", "basketball"],
+        "bio": "Met at the local YMCA. Plays a mean point guard and helps with gym motivation.",
+        "goal": 7,
+        "next_due_date": "2026-04-23"
+    },
+    {
+        "id": 9,
+        "name": "Sophie Martin",
+        "picture": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+        "email": "smartin.books@gmail.com",
+        "days_since_contact": 28,
+        "status": "almost due",
+        "tags": ["book club", "university"],
+        "bio": "We share a love for historical fiction and classic literature.",
+        "goal": 30,
+        "next_due_date": "2026-04-23"
+    },
+    {
+        "id": 10,
+        "name": "Daniel Kim",
+        "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+        "email": "dkim.gaming@protonmail.com",
+        "days_since_contact": 60,
+        "status": "overdue",
+        "tags": ["gaming", "childhood"],
+        "bio": "Been playing MMORPGs together since middle school. Need to catch up soon.",
+        "goal": 30,
+        "next_due_date": "2026-03-22"
+    }
+]
