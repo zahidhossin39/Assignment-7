@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
@@ -37,10 +38,10 @@ const FriendsList = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {friends.map((friend) => (
-            <div
-              key={friend.id}
-              className="bg-white rounded-xl pt-8 pb-6 px-4 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-50 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
-            >
+            <Link href={`/friends/${friend.id}`} key={friend.id}>
+              <div
+                className="bg-white rounded-xl pt-8 pb-6 px-4 flex flex-col items-center justify-between text-center h-full shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-50 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer"
+              >
               <div className="w-[72px] h-[72px] rounded-full overflow-hidden mb-4 relative">
                 <Image
                   src={friend.picture}
@@ -76,7 +77,8 @@ const FriendsList = () => {
                 {friend.status.replace("-", " ")}
               </div>
             </div>
-          ))}
+          </Link>
+        ))}
         </div>
       )}
     </div>
