@@ -10,13 +10,15 @@ export default function TimelinePage() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("timelineLogs") || "[]");
-    const icons = { call: callIcon, text: textIcon, video: videoIcon };
-    
-    setEvents(data.map(item => ({
-      ...item,
-      icon: icons[item.iconType] || "🤝"
-    })));
+    Promise.resolve().then(() => {
+      const data = JSON.parse(localStorage.getItem("timelineLogs") || "[]");
+      const icons = { call: callIcon, text: textIcon, video: videoIcon };
+      
+      setEvents(data.map(item => ({
+        ...item,
+        icon: icons[item.iconType] || "🤝"
+      })));
+    });
   }, []);
 
   return (
