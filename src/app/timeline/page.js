@@ -8,6 +8,7 @@ import videoIcon from '@/assets/img/video.png';
 
 export default function TimelinePage() {
   const [events, setEvents] = useState([]);
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     Promise.resolve().then(() => {
@@ -21,34 +22,51 @@ export default function TimelinePage() {
     });
   }, []);
 
+  const filteredEvents = events.filter(item => 
+    filter === "All" || item.type === filter
+  );
+
   return (
     <div className="max-w-[1000px] mx-auto px-6 py-12">
       <h1 className="text-[32px] font-bold text-[#111827] mb-6">Timeline</h1>
       
-      <div className="mb-8">
-        <select className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-sm text-[#475569] outline-none shadow-sm min-w-[200px] cursor-pointer">
-          <option>Filter timeline</option>
+      <div className="mb-8 flex items-center justify-between">
+        <select 
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-sm text-[#475569] outline-none shadow-sm min-w-[200px] cursor-pointer"
+        >
+          <option value="All">All interactions</option>
+          <option value="Call">Call</option>
+          <option value="Text">Text</option>
+          <option value="Video">Video</option>
         </select>
       </div>
 
       <div className="flex flex-col gap-4 pb-20">
-        {events.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl p-5 flex items-center gap-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-gray-50">
-            <div className="flex items-center justify-center w-12 h-12 shrink-0">
-              {typeof item.icon === 'string' ? (
-                <span className="text-[30px] leading-none">{item.icon}</span>
-              ) : (
-                <Image src={item.icon} alt={item.type} width={38} height={38} className="object-contain" />
-              )}
-            </div>
-            <div>
-              <div className="text-[15px] text-[#475569]">
-                <span className="font-bold text-[#111827]">{item.type}</span> with {item.person}
-              </div>
-              <div className="text-sm text-[#94A3B8] mt-0.5">{item.date}</div>
-            </div>
+        {filteredEvents.length === 0 ? (
+          <div className="text-center text-gray-400 py-10 bg-white rounded-xl shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-gray-50">
+            No timeline entries matched the filter.
           </div>
-        ))}
+        ) : (
+          filteredEvents.map((item) => (
+            <div key={item.id} className="bg-white rounded-xl p-5 flex items-center gap-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-gray-50">
+              <div className="flex items-center justify-center w-12 h-12 shrink-0">
+                {typeof item.icon === 'string' ? (
+                  <span className="text-[30px] leading-none">{item.icon}</span>
+                ) : (
+                  <Image src={item.icon} alt={item.type} width={38} height={38} className="object-contain" />
+                )}
+              </div>
+              <div>
+                <div className="text-[15px] text-[#475569]">
+                  <span className="font-bold text-[#111827]">{item.type}</span> with {item.person}
+                </div>
+                <div className="text-sm text-[#94A3B8] mt-0.5">{item.date}</div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

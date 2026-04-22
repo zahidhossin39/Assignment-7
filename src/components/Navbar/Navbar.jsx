@@ -16,12 +16,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-100 px-10 py-5 flex items-center justify-between sticky top-0 z-50">
+    <nav className="bg-white border-b border-gray-100 px-4 md:px-10 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 gap-4 md:gap-0">
       <Link href="/" className="flex items-center">
         <Image src={logo} alt="KeenKeeper Logo" width={160} height={32} className="h-8 w-auto" priority />
       </Link>
 
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-2 sm:space-x-6 w-full md:w-auto justify-center">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
